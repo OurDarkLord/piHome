@@ -1,0 +1,25 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Home control</title>
+  <meta name="description" content="RBpi home control system">
+  <meta name="author" content="Tim">
+
+  <link rel="stylesheet" href="styles.css?v=1.0">
+
+</head>
+
+<body>
+
+	<div>
+		<button class="living">living</button>
+		<button class="kamer">kamer</button>
+		<button class="keuken">keuken</button>
+	</div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
