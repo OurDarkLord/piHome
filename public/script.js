@@ -1,5 +1,23 @@
 var livingBtn = document.querySelector('.living');
-livingBtn.addEventListener('click', living);
+livingBtn.addEventListener('click', buttonPress(living);
+
+var tafelBtn = document.querySelector('.tafel');
+tafelBtn.addEventListener('click', buttonPress(tafel));
+
+var gangBtn = document.querySelector('.gang');
+gangBtn.addEventListener('click', buttonPress(gang));
+
+var keukenBtn = document.querySelector('.keuken');
+keukenBtn.addEventListener('click', buttonPress(keuken));
+
+var WCBtn = document.querySelector('.WC');
+WCBtn.addEventListener('click', buttonPress(WC));
+
+var kamer1Btn = document.querySelector('.kamer1');
+kamer1Btn.addEventListener('click', buttonPress(kamer1));
+
+var kamer2Btn = document.querySelector('.kamer2');
+kamer2Btn.addEventListener('click', buttonPress(kamer2));
 
 function setButtons(obj) {
 
@@ -47,19 +65,15 @@ function sendPost(opts) {
     return response.json();
   }).then(function(data) {
     console.log('response:', data);
-    if(data.living) {
-    	livingBtn.classList.add('on');
-    } else {
-    	livingBtn.classList.remove('on');
-    }
+    setButtons(data);
     
   });
 }
 
-function living() {
+function buttonPress(loc) {
   setButtons(object);
-    clickBtn({
-      room: 1,
-      location: 'living'
+    sendPost({
+      location: loc
     });
 }
+
