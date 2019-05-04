@@ -14,12 +14,22 @@
 
 <body>
 
-	<div>
-		<button class="living">living</button>
-		<button class="kamer">kamer</button>
-		<button class="keuken">keuken</button>
+
+  <h1>Home control</h1>
+
+
+	<div class="buttons">
+
+		<div class="btn"><div class="living contentBtn on">living</div></div>
+		<div class="btn"><div class="tafel contentBtn on">tafel</div></div>
+		<div class="btn"><div class="gang contentBtn on">gang</div></div>
+		<div class="btn"><div class="keuken contentBtn">keuken</div></div>
+		<div class="btn"><div class="WC contentBtn">WC</div></div>
+		<div class="btn"><div class="kamer1 contentBtn">kamer</div></div>
+		<div class="btn"><div class="kamer2 contentBtn">kamer</div></div>
+		
 	</div>
 
-  <script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
