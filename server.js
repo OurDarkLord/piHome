@@ -14,26 +14,18 @@ var Gpio = require('pigpio').Gpio;
 
 let living = new Gpio(2, {mode: Gpio.OUTPUT});
 let livingStatus = false;
-
-let kamer = new Gpio(3, {mode: Gpio.OUTPUT});
-let kamerStatus = false;
-
-let keuken = new Gpio(4, {mode: Gpio.OUTPUT});
+let tafel = new Gpio(3, {mode: Gpio.OUTPUT});
+let tafelStatus = false;
+let gang = new Gpio(4, {mode: Gpio.OUTPUT});
+let gangStatus = false;
+let keuken = new Gpio(5, {mode: Gpio.OUTPUT});
 let keukenStatus = false;
-
-function allOut() {
-	living.digitalWrite(false);
-	kamer.digitalWrite(false);
-	keuken.digitalWrite(false);
-}
-
-function update() {
-	return data = {
-		"living" : livingStatus,
-		"kamer" : keukenStatus,
-		"keuken" : keukenStatus
-	}
-}
+let WC = new Gpio(6, {mode: Gpio.OUTPUT});
+let WCStatus = false;
+let kamer1 = new Gpio(7, {mode: Gpio.OUTPUT});
+let kamer1Status = false;
+let kamer2 = new Gpio(8, {mode: Gpio.OUTPUT});
+let kamer2Status = false;
 
 app.post('/living', (req, res) => {
 		livingStatus = !livingStatus;
@@ -42,6 +34,69 @@ app.post('/living', (req, res) => {
 	  	res.send(JSON.stringify(update()))
 });
 
+app.post('/tafel', (req, res) => {
+		tafelStatus = !tafelStatus;
+		tafel.digitalWrite(tafelStatus);
+		
+	  	res.send(JSON.stringify(update()))
+});
+
+app.post('/gang', (req, res) => {
+		gangStatus = !gangStatus;
+		gang.digitalWrite(gangStatus);
+		
+	  	res.send(JSON.stringify(update()))
+});
+
+app.post('/keuken', (req, res) => {
+		keukenStatus = !keukenStatus;
+		keuken.digitalWrite(keukenStatus);
+		
+	  	res.send(JSON.stringify(update()))
+});
+
+app.post('/WC', (req, res) => {
+		WCStatus = !WCStatus;
+		WC.digitalWrite(WCStatus);
+		
+	  	res.send(JSON.stringify(update()))
+});
+
+app.post('/kamer1', (req, res) => {
+		kamer1Status = !kamer1Status;
+		kamer1.digitalWrite(kamer1Status);
+		
+	  	res.send(JSON.stringify(update()))
+});
+
+app.post('/kamer2', (req, res) => {
+		kamer2Status = !kamer2Status;
+		kamer2.digitalWrite(kamer2Status);
+		
+	  	res.send(JSON.stringify(update()))
+});
+
+
+
+function allOut() {
+	living.digitalWrite(false);
+	kamer.digitalWrite(false);
+	keuken.digitalWrite(false);
+}
+
+
+
+function update() {
+	return data = {
+		"living" : livingStatus,
+		"tafel" : livingStatus,
+		"gang" : gangStatus,
+		"keuken" : keukenStatus,
+		"WC" : WCStatus,
+		"kamer1" : kamer1Status,
+		"kamer2" : kamer2Status,
+	}
+}
 
 app.use(express.static(path.join(__dirname, 'public')));
 
